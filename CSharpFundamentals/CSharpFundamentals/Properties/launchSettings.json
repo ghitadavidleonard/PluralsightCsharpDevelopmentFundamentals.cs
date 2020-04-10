@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CSharpFundamentals": {
+      "commandName": "Project",
+      "commandLineArgs": "David, Leonard"
+    }
+  }
+}
