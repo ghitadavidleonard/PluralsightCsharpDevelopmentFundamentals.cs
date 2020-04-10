@@ -21,20 +21,52 @@ namespace CSharpFundamentals
 
 
         // methods
-        public double ComputeAverageGrade(List<double> grades)
+        public void AddGrade(double grade)
         {
-            var result = grades[0];
+            grades.Add(grade);
+        }
+
+        public void ShowStatistics()
+        {
+            Console.WriteLine($"The average grade is: {GetAverageGrade()}");
+            Console.WriteLine($"The lowest grade is: {GetLowestGrade()}");
+            Console.WriteLine($"The highest grade is: {GetHighestGrade()}");
+        }
+
+        private double GetLowestGrade()
+        { 
+            var lowGrade = double.MaxValue;
+
+            foreach (var grade in grades)
+            {
+                lowGrade = Math.Min(grade, lowGrade);
+            }
+
+            return lowGrade;
+        }
+
+        private double GetHighestGrade()
+        {
+            var highGrade = double.MinValue;
+
+            foreach (var grade in grades)
+            {
+                highGrade = Math.Max(grade, highGrade);
+            }
+
+            return highGrade;
+        }
+
+        private double GetAverageGrade()
+        {
+            var result = 0.0;
+
             foreach (var grade in grades)
             {
                 result += grade;
             }
 
             return result / grades.Count;
-        }
-
-        public void AddGrade(double grade)
-        {
-            grades.Add(grade);
         }
     }
 }
