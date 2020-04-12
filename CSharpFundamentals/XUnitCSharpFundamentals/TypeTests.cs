@@ -7,6 +7,21 @@ namespace XUnitCSharpFundamentals
     public class TypeTests
     {
         [Fact]
+        public void StringsBehaveLikeValueTypes()
+        {
+            string name = "Scott";
+            var upper = MakeUppercase(name);
+
+            Assert.Equal("Scott", name);
+            Assert.Equal("SCOTT", upper);
+        }
+
+        private string MakeUppercase(string parameter)
+        {
+            return parameter.ToUpper();
+        }
+
+        [Fact]
         public void Test1()
         {
             var x = GetInt();
