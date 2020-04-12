@@ -1,29 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CSharpFundamentals
 {
     // Think of a class as a blueprint. It describes how I will build objects
     public class Book
     {
-        // fields or properties (With fields you can't use implicit typing)
         private List<double> grades;
         public string Name;
 
-        // constructors - the ideea of a constructor is that it constructs objects with some default values 
         public Book(string name)
         {
             grades = new List<double>();
-            // this is a reference to the object that we operate on
             Name = name;
         }
-
 
         // methods
         public void AddGrade(double grade)
         {
-            grades.Add(grade);
+            if (grade >= 0 && grade <= 100)
+            {
+                grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine("Invalid value!");
+            }
         }
 
         public void ShowStatistics()
@@ -45,24 +47,30 @@ namespace CSharpFundamentals
         }
 
         private double GetLowestGrade()
-        { 
+        {
             var lowGrade = double.MaxValue;
-
-            foreach (var grade in grades)
+            int index = 0;
+            // the do while loop will execute at least once
+            if (grades.Count > 0)
             {
-                lowGrade = Math.Min(grade, lowGrade);
+                do
+                {
+                    lowGrade = Math.Min(grades[index], lowGrade);
+                    index++;
+                } while (index < grades.Count);
             }
-
             return lowGrade;
         }
 
         private double GetHighestGrade()
         {
             var highGrade = double.MinValue;
+            var index = 0;
 
-            foreach (var grade in grades)
+            while (index < grades.Count)
             {
-                highGrade = Math.Max(grade, highGrade);
+                highGrade = Math.Max(grades[index], highGrade);
+                index++;
             }
 
             return highGrade;
@@ -72,9 +80,9 @@ namespace CSharpFundamentals
         {
             var result = 0.0;
 
-            foreach (var grade in grades)
+            for (var i = 0; i < grades.Count; i++)
             {
-                result += grade;
+                result += grades[i];
             }
 
             return result / grades.Count;
