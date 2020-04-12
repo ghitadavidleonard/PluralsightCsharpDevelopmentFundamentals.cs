@@ -1,29 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CSharpFundamentals
 {
     // Think of a class as a blueprint. It describes how I will build objects
     public class Book
     {
-        // fields or properties (With fields you can't use implicit typing)
         private List<double> grades;
         public string Name;
 
-        // constructors - the ideea of a constructor is that it constructs objects with some default values 
         public Book(string name)
         {
             grades = new List<double>();
-            // this is a reference to the object that we operate on
             Name = name;
         }
 
+        public void AddLetterGrade(char letter)
+        {
+            switch(letter)
+            {
+                case 'A':
+                    AddGrade(90);
+                    break;
+                case 'B':
+                    AddGrade(80);
+                    break;
+                case 'C':
+                    AddGrade(70);
+                    break;
+                default:
+                    AddGrade(0);
+                    break;
+            }
+        }
 
         // methods
         public void AddGrade(double grade)
         {
-            grades.Add(grade);
+            if (grade >= 0 && grade <= 100)
+            {
+                grades.Add(grade);
+            }
+            else
+            {
+                throw new ArgumentException($"Invalid {nameof(grade)}");
+            }
         }
 
         public void ShowStatistics()
@@ -31,6 +52,7 @@ namespace CSharpFundamentals
             Console.WriteLine($"The average grade is: {GetAverageGrade()}");
             Console.WriteLine($"The lowest grade is: {GetLowestGrade()}");
             Console.WriteLine($"The highest grade is: {GetHighestGrade()}");
+            Console.WriteLine($"The letter grade is: {GetLetterGrade()}");
         }
 
         public Statistics GetStatistics()
@@ -40,29 +62,36 @@ namespace CSharpFundamentals
             result.High = GetHighestGrade();
             result.Low = GetLowestGrade();
             result.Average = GetAverageGrade();
+            result.Letter = GetLetterGrade();
 
             return result;
         }
 
         private double GetLowestGrade()
-        { 
+        {
             var lowGrade = double.MaxValue;
+            int index = 0;
 
-            foreach (var grade in grades)
+            if (grades.Count > 0)
             {
-                lowGrade = Math.Min(grade, lowGrade);
+                do
+                {
+                    lowGrade = Math.Min(grades[index], lowGrade);
+                    index++;
+                } while (index < grades.Count);
             }
-
             return lowGrade;
         }
 
         private double GetHighestGrade()
         {
             var highGrade = double.MinValue;
+            var index = 0;
 
-            foreach (var grade in grades)
+            while (index < grades.Count)
             {
-                highGrade = Math.Max(grade, highGrade);
+                highGrade = Math.Max(grades[index], highGrade);
+                index++;
             }
 
             return highGrade;
@@ -71,13 +100,34 @@ namespace CSharpFundamentals
         private double GetAverageGrade()
         {
             var result = 0.0;
-
-            foreach (var grade in grades)
+            for (var i = 0; i < grades.Count; i++)
             {
-                result += grade;
+                result += grades[i];
             }
 
             return result / grades.Count;
+        }
+
+
+        private char GetLetterGrade()
+        {
+            switch(GetAverageGrade())
+            {
+                case var d when d >= 90:
+                    return 'A';
+
+                case var d when d >= 80:
+                    return 'B';
+
+                case var d when d >= 70:
+                    return 'C';
+
+                case var d when d >= 60:
+                    return 'D';
+
+                default:
+                    return 'F';
+            }
         }
     }
 }
