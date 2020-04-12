@@ -9,7 +9,7 @@ namespace XUnitCSharpFundamentals
         // The test code should be executable statements
         // We use "Fact" attribute for the actual unit tests methods
         [Fact]
-        public void Test1()
+        public void BookCalculatesAnAverangeGrade()
         {
             // arrange
             var book = new Book("");

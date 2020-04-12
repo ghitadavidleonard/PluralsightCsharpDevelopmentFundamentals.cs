@@ -9,14 +9,14 @@ namespace CSharpFundamentals
     {
         // fields or properties (With fields you can't use implicit typing)
         private List<double> grades;
-        private string name;
+        public string Name;
 
         // constructors - the ideea of a constructor is that it constructs objects with some default values 
         public Book(string name)
         {
             grades = new List<double>();
             // this is a reference to the object that we operate on
-            this.name = name;
+            Name = name;
         }
 
 
