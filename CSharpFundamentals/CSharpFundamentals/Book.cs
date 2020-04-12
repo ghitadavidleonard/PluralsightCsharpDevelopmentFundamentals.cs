@@ -15,6 +15,25 @@ namespace CSharpFundamentals
             Name = name;
         }
 
+        public void AddLetterGrade(char letter)
+        {
+            switch(letter)
+            {
+                case 'A':
+                    AddGrade(90);
+                    break;
+                case 'B':
+                    AddGrade(80);
+                    break;
+                case 'C':
+                    AddGrade(70);
+                    break;
+                default:
+                    AddGrade(0);
+                    break;
+            }
+        }
+
         // methods
         public void AddGrade(double grade)
         {
@@ -33,6 +52,7 @@ namespace CSharpFundamentals
             Console.WriteLine($"The average grade is: {GetAverageGrade()}");
             Console.WriteLine($"The lowest grade is: {GetLowestGrade()}");
             Console.WriteLine($"The highest grade is: {GetHighestGrade()}");
+            Console.WriteLine($"The letter grade is: {GetLetterGrade()}");
         }
 
         public Statistics GetStatistics()
@@ -42,6 +62,7 @@ namespace CSharpFundamentals
             result.High = GetHighestGrade();
             result.Low = GetLowestGrade();
             result.Average = GetAverageGrade();
+            result.Letter = GetLetterGrade();
 
             return result;
         }
@@ -50,7 +71,7 @@ namespace CSharpFundamentals
         {
             var lowGrade = double.MaxValue;
             int index = 0;
-            // the do while loop will execute at least once
+
             if (grades.Count > 0)
             {
                 do
@@ -67,13 +88,8 @@ namespace CSharpFundamentals
             var highGrade = double.MinValue;
             var index = 0;
 
-            // use continue to go to the next interation
             while (index < grades.Count)
             {
-                //if (grades[index] == 42.1)
-                //{
-                //    continue
-                //}
                 highGrade = Math.Max(grades[index], highGrade);
                 index++;
             }
@@ -84,17 +100,34 @@ namespace CSharpFundamentals
         private double GetAverageGrade()
         {
             var result = 0.0;
-            // breaking a loop
             for (var i = 0; i < grades.Count; i++)
             {
-                //if (grades[i] == 42.1)
-                //{
-                //    break;
-                //}
                 result += grades[i];
             }
 
             return result / grades.Count;
+        }
+
+
+        private char GetLetterGrade()
+        {
+            switch(GetAverageGrade())
+            {
+                case var d when d >= 90:
+                    return 'A';
+
+                case var d when d >= 80:
+                    return 'B';
+
+                case var d when d >= 70:
+                    return 'C';
+
+                case var d when d >= 60:
+                    return 'D';
+
+                default:
+                    return 'F';
+            }
         }
     }
 }
