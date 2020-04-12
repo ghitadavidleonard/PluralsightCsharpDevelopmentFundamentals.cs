@@ -33,6 +33,17 @@ namespace CSharpFundamentals
             Console.WriteLine($"The highest grade is: {GetHighestGrade()}");
         }
 
+        public Statistics GetStatistics()
+        {
+            var result = new Statistics();
+
+            result.High = GetHighestGrade();
+            result.Low = GetLowestGrade();
+            result.Average = GetAverageGrade();
+
+            return result;
+        }
+
         private double GetLowestGrade()
         { 
             var lowGrade = double.MaxValue;
