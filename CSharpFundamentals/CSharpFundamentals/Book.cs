@@ -67,8 +67,13 @@ namespace CSharpFundamentals
             var highGrade = double.MinValue;
             var index = 0;
 
+            // use continue to go to the next interation
             while (index < grades.Count)
             {
+                //if (grades[index] == 42.1)
+                //{
+                //    continue
+                //}
                 highGrade = Math.Max(grades[index], highGrade);
                 index++;
             }
@@ -79,9 +84,13 @@ namespace CSharpFundamentals
         private double GetAverageGrade()
         {
             var result = 0.0;
-
+            // breaking a loop
             for (var i = 0; i < grades.Count; i++)
             {
+                //if (grades[i] == 42.1)
+                //{
+                //    break;
+                //}
                 result += grades[i];
             }
 
