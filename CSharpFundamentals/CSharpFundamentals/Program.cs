@@ -7,6 +7,12 @@ namespace CSharpFundamentals
         private static void Main(string[] args)
         {
             Book book = new Book("David's Grade Book");
+
+            book.GradeAdded += OnGradeAdded;
+            book.GradeAdded += OnGradeAdded;
+            book.GradeAdded -= OnGradeAdded;
+            book.GradeAdded += OnGradeAdded;
+
             string input = "";
 
             while (!input.Contains("q"))
@@ -40,5 +46,11 @@ namespace CSharpFundamentals
             Console.WriteLine(Book.CATEGORY);
             Console.WriteLine($"For the book named {book.Name}");
         }
+
+        static void OnGradeAdded(object sender, EventArgs eventArgs)
+        {
+            Console.WriteLine("A grade was added!");
+        }
+
     }
 }
