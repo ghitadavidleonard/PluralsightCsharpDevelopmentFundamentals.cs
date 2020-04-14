@@ -7,7 +7,27 @@ namespace CSharpFundamentals
     public class Book
     {
         private List<double> grades;
-        public string Name;
+        private string name;
+        
+        public string Name 
+        { 
+            get 
+            {
+                return name;
+            }
+
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    name = value;
+                }
+                else
+                {
+                    throw new ArgumentException($"Invalud {nameof(name)}");
+                }
+            }
+        }
 
         public Book(string name)
         {
@@ -15,7 +35,7 @@ namespace CSharpFundamentals
             Name = name;
         }
 
-        public void AddLetterGrade(char letter)
+        public void AddGrade(char letter)
         {
             switch(letter)
             {
