@@ -8,29 +8,14 @@ namespace CSharpFundamentals
     {
         private List<double> grades;
         private string name;
-        
-        public string Name 
-        { 
-            get 
-            {
-                return name;
-            }
+        //readonly string category = "Science";
+        public const string CATEGORY = "Science";
 
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    name = value;
-                }
-                else
-                {
-                    throw new ArgumentException($"Invalud {nameof(name)}");
-                }
-            }
-        }
+        public string Name { get; private set; }
 
         public Book(string name)
         {
+            // category = "";
             grades = new List<double>();
             Name = name;
         }

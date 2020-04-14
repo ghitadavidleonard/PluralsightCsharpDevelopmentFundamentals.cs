@@ -37,15 +37,7 @@ namespace CSharpFundamentals
 
             book.ShowStatistics();
 
-            try
-            {
-                book.Name = "Leonard";
-            }
-            catch(ArgumentException ex)
-            {
-                Console.WriteLine($"{ex.Message}");
-            }
-
+            Console.WriteLine(Book.CATEGORY);
             Console.WriteLine($"For the book named {book.Name}");
         }
     }
