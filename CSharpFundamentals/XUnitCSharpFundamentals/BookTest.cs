@@ -32,14 +32,11 @@ namespace XUnitCSharpFundamentals
         {
             // arrage
             var book = new Book("Existance");
-
-            // act
-            book.AddGrade(105);
-            book.AddGrade(-43);
+            Type exceptionType = typeof(ArgumentException);
 
             // assert
-            Assert.NotEqual(105, book.GetStatistics().High, 1);
-            Assert.NotEqual(-43, book.GetStatistics().Low, 1);
+            Assert.Throws(exceptionType, () => book.AddGrade(105));
+            Assert.Throws<ArgumentException>(() => book.AddGrade(-43));
         }
     }
 }

@@ -4,8 +4,27 @@ using Xunit;
 
 namespace XUnitCSharpFundamentals
 {
+    // define a var that can point to and invoke different methods. When defining a delegate you are defining what a method has to look like
+    public delegate string WriteLogDelegate(string logMessage);
+
     public class TypeTests
     {
+        [Fact]
+        public void WriteLogDelegateCanPointToMethod()
+        {
+            WriteLogDelegate log;
+
+            log = ReturnMessage;
+
+            var result = log("Hello!");
+            Assert.Equal("Hello!", result);
+        }
+
+        string ReturnMessage(string message)
+        {
+            return message;
+        }
+
         [Fact]
         public void StringsBehaveLikeValueTypes()
         {

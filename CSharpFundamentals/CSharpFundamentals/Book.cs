@@ -7,11 +7,10 @@ namespace CSharpFundamentals
     public class Book
     {
         private List<double> grades;
-        private string name;
         //readonly string category = "Science";
         public const string CATEGORY = "Science";
 
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         public Book(string name)
         {
