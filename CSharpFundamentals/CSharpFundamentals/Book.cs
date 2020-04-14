@@ -3,19 +3,26 @@ using System.Collections.Generic;
 
 namespace CSharpFundamentals
 {
+    public delegate void GradeAddedDelegate(object sender, EventArgs args);
+
     // Think of a class as a blueprint. It describes how I will build objects
     public class Book
     {
+        public event GradeAddedDelegate GradeAdded;
         private List<double> grades;
-        public string Name;
+        //readonly string category = "Science";
+        public const string CATEGORY = "Science";
+
+        public string Name { get; set; }
 
         public Book(string name)
         {
+            // category = "";
             grades = new List<double>();
             Name = name;
         }
 
-        public void AddLetterGrade(char letter)
+        public void AddGrade(char letter)
         {
             switch(letter)
             {
@@ -40,6 +47,8 @@ namespace CSharpFundamentals
             if (grade >= 0 && grade <= 100)
             {
                 grades.Add(grade);
+
+                GradeAdded?.Invoke(this, new EventArgs());
             }
             else
             {
