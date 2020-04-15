@@ -18,7 +18,7 @@ namespace CSharpFundamentals
             Console.WriteLine($"For the book named {book.Name}");
         }
 
-        private static void EnterGrade(Book book)
+        private static void EnterGrade(IBook book)
         {
             string input = "";
 

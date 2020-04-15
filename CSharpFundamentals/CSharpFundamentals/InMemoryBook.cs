@@ -3,11 +3,9 @@ using System.Collections.Generic;
 
 namespace CSharpFundamentals
 {
-    public delegate void GradeAddedDelegate(object sender, EventArgs args);
-
-    public class InMemoryBook : Book
+    public class InMemoryBook : Book, IBook
     {
-        public event GradeAddedDelegate GradeAdded;
+        public override event GradeAddedDelegate GradeAdded;
         private List<double> grades;
         public const string CATEGORY = "Science";
 
@@ -41,7 +39,7 @@ namespace CSharpFundamentals
             {
                 grades.Add(grade);
 
-                GradeAdded?.Invoke(this, new EventArgs());
+                GradeAdded(this, new EventArgs());
             }
             else
             {
@@ -57,7 +55,7 @@ namespace CSharpFundamentals
             Console.WriteLine($"The letter grade is: {GetLetterGrade()}");
         }
 
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var result = new Statistics();
 
