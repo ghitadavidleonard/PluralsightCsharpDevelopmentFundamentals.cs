@@ -12,7 +12,7 @@ namespace XUnitCSharpFundamentals
         public void BookCalculatesAnAverangeGrade()
         {
             // arrange
-            var book = new Book("");
+            var book = new InMemoryBook("");
             book.AddGrade(89.1);
             book.AddGrade(90.5);
             book.AddGrade(77.3);
@@ -31,7 +31,7 @@ namespace XUnitCSharpFundamentals
         public void AddGradeBetween0and100()
         {
             // arrage
-            var book = new Book("Existance");
+            var book = new InMemoryBook("Existance");
             Type exceptionType = typeof(ArgumentException);
 
             // assert

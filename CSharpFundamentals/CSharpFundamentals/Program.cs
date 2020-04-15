@@ -6,15 +6,15 @@ namespace CSharpFundamentals
     {
         private static void Main(string[] args)
         {
-            Book book = new Book("David's Grade Book");
+            InMemoryBook book = new InMemoryBook("David's Grade InMemoryBook");
 
             book.GradeAdded += OnGradeAdded;
-
+            
             EnterGrade(book);
 
             book.ShowStatistics();
 
-            Console.WriteLine(Book.CATEGORY);
+            Console.WriteLine(InMemoryBook.CATEGORY);
             Console.WriteLine($"For the book named {book.Name}");
         }
 
