@@ -5,21 +5,15 @@ namespace CSharpFundamentals
 {
     public delegate void GradeAddedDelegate(object sender, EventArgs args);
 
-    // Think of a class as a blueprint. It describes how I will build objects
-    public class Book
+    public class Book : NamedObject
     {
         public event GradeAddedDelegate GradeAdded;
         private List<double> grades;
-        //readonly string category = "Science";
         public const string CATEGORY = "Science";
 
-        public string Name { get; set; }
-
-        public Book(string name)
+        public Book(string name) : base(name)
         {
-            // category = "";
             grades = new List<double>();
-            Name = name;
         }
 
         public void AddGrade(char letter)
@@ -41,7 +35,6 @@ namespace CSharpFundamentals
             }
         }
 
-        // methods
         public void AddGrade(double grade)
         {
             if (grade >= 0 && grade <= 100)
