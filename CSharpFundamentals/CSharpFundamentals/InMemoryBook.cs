@@ -16,7 +16,7 @@ namespace CSharpFundamentals
 
         public void AddGrade(char letter)
         {
-            switch(letter)
+            switch (letter)
             {
                 case 'A':
                     AddGrade(90);
@@ -47,87 +47,16 @@ namespace CSharpFundamentals
             }
         }
 
-        public void ShowStatistics()
-        {
-            Console.WriteLine($"The average grade is: {GetAverageGrade()}");
-            Console.WriteLine($"The lowest grade is: {GetLowestGrade()}");
-            Console.WriteLine($"The highest grade is: {GetHighestGrade()}");
-            Console.WriteLine($"The letter grade is: {GetLetterGrade()}");
-        }
-
         public override Statistics GetStatistics()
         {
             var result = new Statistics();
 
-            result.High = GetHighestGrade();
-            result.Low = GetLowestGrade();
-            result.Average = GetAverageGrade();
-            result.Letter = GetLetterGrade();
+            for (var index = 0; index < grades.Count; index++)
+            {
+                result.Add(grades[index]);
+            }
 
             return result;
-        }
-
-        private double GetLowestGrade()
-        {
-            var lowGrade = double.MaxValue;
-            int index = 0;
-
-            if (grades.Count > 0)
-            {
-                do
-                {
-                    lowGrade = Math.Min(grades[index], lowGrade);
-                    index++;
-                } while (index < grades.Count);
-            }
-            return lowGrade;
-        }
-
-        private double GetHighestGrade()
-        {
-            var highGrade = double.MinValue;
-            var index = 0;
-
-            while (index < grades.Count)
-            {
-                highGrade = Math.Max(grades[index], highGrade);
-                index++;
-            }
-
-            return highGrade;
-        }
-
-        private double GetAverageGrade()
-        {
-            var result = 0.0;
-            for (var i = 0; i < grades.Count; i++)
-            {
-                result += grades[i];
-            }
-
-            return result / grades.Count;
-        }
-
-
-        private char GetLetterGrade()
-        {
-            switch(GetAverageGrade())
-            {
-                case var d when d >= 90:
-                    return 'A';
-
-                case var d when d >= 80:
-                    return 'B';
-
-                case var d when d >= 70:
-                    return 'C';
-
-                case var d when d >= 60:
-                    return 'D';
-
-                default:
-                    return 'F';
-            }
         }
     }
 }

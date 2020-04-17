@@ -6,16 +6,17 @@ namespace CSharpFundamentals
     {
         private static void Main(string[] args)
         {
-            InMemoryBook book = new InMemoryBook("David's Grade InMemoryBook");
+            IBook book = new DiskBook("David's Grade InMemoryBook");
 
             book.GradeAdded += OnGradeAdded;
             
             EnterGrade(book);
 
-            book.ShowStatistics();
-
-            Console.WriteLine(InMemoryBook.CATEGORY);
             Console.WriteLine($"For the book named {book.Name}");
+            Console.WriteLine($"The lowest grade is {book.GetStatistics().Low}");
+            Console.WriteLine($"The highest grade is {book.GetStatistics().High}");
+            Console.WriteLine($"The average grade is {book.GetStatistics().Average}");
+            Console.WriteLine($"The letter grade is {book.GetStatistics().Letter}");
         }
 
         private static void EnterGrade(IBook book)
