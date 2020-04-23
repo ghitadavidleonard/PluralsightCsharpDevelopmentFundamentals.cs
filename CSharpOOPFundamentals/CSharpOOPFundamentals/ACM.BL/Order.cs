@@ -6,14 +6,20 @@ namespace ACM.BL
 {
     public class Order
     {
-        public Order() {}
-        public Order(int orderId)
+        public Order() 
+        {
+            OrderItems = new List<OrderItem>();
+        }
+        public Order(int orderId) : this()
         {
             OrderId = orderId;
         }
 
+        public int CustomerId { get; set; }
+        public int ShippingAddressId { get; set; }
         public int OrderId { get; private set; }
         public Address ShippingAddress { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
         public DateTimeOffset? OrderDate { get; set; }
 
         public bool Validate()
