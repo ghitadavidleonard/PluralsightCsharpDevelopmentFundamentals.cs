@@ -34,23 +34,41 @@ namespace ACM.BL
             set => _lastName = value;
         }
 
+        public Customer() {}
+        public Customer(int customerId)
+        {
+            CustomerId = customerId;
+        }
+
+        /// <summary>
+        /// Retrieve one customer
+        /// </summary>
         public Customer Retrieve(int customerId)
         {
 
             return new Customer();
         }
 
+        /// <summary>
+        /// Retrieve all customers.
+        /// </summary>
         public List<Customer> Retrieve()
         {
             return new List<Customer>();
         }
 
+        /// <summary>
+        /// Saves the current customers.
+        /// </summary>
         public bool Save()
         {
 
             return true;
         }
 
+        /// <summary>
+        /// Validates the customer data
+        /// </summary>
         public bool Validate()
         {
             var isValid = true;
