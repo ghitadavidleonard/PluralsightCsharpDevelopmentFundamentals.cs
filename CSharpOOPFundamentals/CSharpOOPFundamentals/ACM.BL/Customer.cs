@@ -56,7 +56,7 @@ namespace ACM.BL
             var isValid = true;
 
             if (string.IsNullOrWhiteSpace(LastName)) isValid = false;
-            if (string.IsNullOrWhiteSpace(FirstName)) isValid = false;
+            if (string.IsNullOrWhiteSpace(EmailAddress)) isValid = false;
 
             return isValid;
         }
