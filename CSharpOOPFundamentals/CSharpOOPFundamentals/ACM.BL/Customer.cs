@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 
 namespace ACM.BL
@@ -31,6 +32,51 @@ namespace ACM.BL
         {
             get => _lastName;
             set => _lastName = value;
+        }
+
+        public Customer() {}
+        public Customer(int customerId)
+        {
+            CustomerId = customerId;
+        }
+
+        /// <summary>
+        /// Retrieve one customer
+        /// </summary>
+        public Customer Retrieve(int customerId)
+        {
+
+            return new Customer();
+        }
+
+        /// <summary>
+        /// Retrieve all customers.
+        /// </summary>
+        public List<Customer> Retrieve()
+        {
+            return new List<Customer>();
+        }
+
+        /// <summary>
+        /// Saves the current customers.
+        /// </summary>
+        public bool Save()
+        {
+
+            return true;
+        }
+
+        /// <summary>
+        /// Validates the customer data
+        /// </summary>
+        public bool Validate()
+        {
+            var isValid = true;
+
+            if (string.IsNullOrWhiteSpace(LastName)) isValid = false;
+            if (string.IsNullOrWhiteSpace(EmailAddress)) isValid = false;
+
+            return isValid;
         }
 
     }

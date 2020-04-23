@@ -1,5 +1,4 @@
 using ACM.BL;
-using System;
 using Xunit;
 
 namespace ACM.BLTest
@@ -80,6 +79,43 @@ namespace ACM.BLTest
 
             //-- Assert
             Assert.Equal(3, Customer.InstanceCount);
+        }
+
+        [Fact]
+        public void ValidateValid()
+        {
+            //-- Arrange
+            var customer = new Customer
+            {
+                LastName = "Baggins",
+                EmailAddress = "fbaggins@hobbiton.me"
+            };
+
+            var expected = true;
+
+            //-- Act
+            var actual = customer.Validate();
+
+            //-- Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void ValidateMissingLastName()
+        {
+            //-- Arrange
+            var customer = new Customer
+            {
+                EmailAddress = "fbaggins@hobbiton.me"
+            };
+
+            var expected = false;
+
+            //-- Act
+            var actual = customer.Validate();
+
+            //-- Assert
+            Assert.Equal(expected, actual);
         }
     }
 }
