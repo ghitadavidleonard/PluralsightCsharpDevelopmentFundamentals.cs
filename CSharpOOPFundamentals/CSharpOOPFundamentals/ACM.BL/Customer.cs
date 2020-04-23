@@ -9,6 +9,8 @@ namespace ACM.BL
         public static int InstanceCount { get; set; }
         public int CustomerId { get; private set; }
         public string EmailAddress { get; set; }
+        public Address HomeAddress { get; set; }
+        public Address WorkAddress { get; set; }
         public string FirstName { get; set; }
         public string FullName 
         {
@@ -38,32 +40,6 @@ namespace ACM.BL
         public Customer(int customerId)
         {
             CustomerId = customerId;
-        }
-
-        /// <summary>
-        /// Retrieve one customer
-        /// </summary>
-        public Customer Retrieve(int customerId)
-        {
-
-            return new Customer();
-        }
-
-        /// <summary>
-        /// Retrieve all customers.
-        /// </summary>
-        public List<Customer> Retrieve()
-        {
-            return new List<Customer>();
-        }
-
-        /// <summary>
-        /// Saves the current customers.
-        /// </summary>
-        public bool Save()
-        {
-
-            return true;
         }
 
         /// <summary>
