@@ -13,26 +13,8 @@ namespace ACM.BL
         }
 
         public int OrderId { get; private set; }
+        public Address ShippingAddress { get; set; }
         public DateTimeOffset? OrderDate { get; set; }
-
-        /// <summary>
-        /// Retrieve one order
-        /// </summary>
-        /// <param name="orderId"></param>
-        /// <returns></returns>
-        public Order Retrieve(int orderId)
-        {
-            return new Order();
-        }
-
-        /// <summary>
-        /// Saves the current order
-        /// </summary>
-        /// <returns></returns>
-        public bool Save()
-        {
-            return true;
-        }
 
         public bool Validate()
         {

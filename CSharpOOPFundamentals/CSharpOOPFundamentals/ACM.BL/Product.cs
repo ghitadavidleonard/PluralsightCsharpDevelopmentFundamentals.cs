@@ -27,29 +27,5 @@ namespace ACM.BL
 
             return true;
         }
-
-        /// <summary>
-        /// Save a product
-        /// </summary>
-        public void Save()
-        {
-
-        }
-
-        /// <summary>
-        /// Retrieve a product
-        /// </summary>
-        public Product Retrieve(int productId)
-        {
-            return new Product();
-        }
-
-        /// <summary>
-        /// Retrieve all products
-        /// </summary>
-        public List<Product> Retrieve()
-        {
-            return new List<Product>();
-        }
     }
 }
