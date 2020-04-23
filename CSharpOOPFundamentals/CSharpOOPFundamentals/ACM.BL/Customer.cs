@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Reflection.Metadata.Ecma335;
 
 namespace ACM.BL
@@ -9,8 +10,7 @@ namespace ACM.BL
         public static int InstanceCount { get; set; }
         public int CustomerId { get; private set; }
         public string EmailAddress { get; set; }
-        public Address HomeAddress { get; set; }
-        public Address WorkAddress { get; set; }
+        public List<Address> AddressList { get; set; }
         public string FirstName { get; set; }
         public string FullName 
         {
@@ -36,10 +36,11 @@ namespace ACM.BL
             set => _lastName = value;
         }
 
-        public Customer() {}
+        public Customer() : this(0) {}
         public Customer(int customerId)
         {
             CustomerId = customerId;
+            AddressList = new List<Address>();
         }
 
         /// <summary>
