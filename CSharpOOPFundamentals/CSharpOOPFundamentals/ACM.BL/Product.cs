@@ -40,5 +40,7 @@ namespace ACM.BL
 
             return true;
         }
+
+        public string Log() => $"{ProductId}: {ProductName} Detail: {Description} Staus: {EntityState.ToString()}";
     }
 }
