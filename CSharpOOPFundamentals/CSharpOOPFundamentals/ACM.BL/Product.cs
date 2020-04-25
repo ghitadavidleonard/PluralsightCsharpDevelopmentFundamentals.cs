@@ -18,6 +18,7 @@ namespace ACM.BL
             ProductId = productId;
         }
 
+        public override string ToString() => ProductName;
         /// <summary>
         /// Validates the product data
         /// </summary>

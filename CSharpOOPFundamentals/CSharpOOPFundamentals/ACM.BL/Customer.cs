@@ -43,6 +43,8 @@ namespace ACM.BL
             AddressList = new List<Address>();
         }
 
+        public override string ToString() => $"{FullName}";
+
         /// <summary>
         /// Validates the customer data
         /// </summary>
