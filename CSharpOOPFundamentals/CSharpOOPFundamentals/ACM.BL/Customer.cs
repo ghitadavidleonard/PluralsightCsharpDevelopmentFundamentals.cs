@@ -5,7 +5,7 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace ACM.BL
 {
-    public class Customer
+    public class Customer : EntityBase
     {
         public static int InstanceCount { get; set; }
         public int CustomerId { get; private set; }
@@ -43,10 +43,12 @@ namespace ACM.BL
             AddressList = new List<Address>();
         }
 
+        public override string ToString() => $"{FullName}";
+
         /// <summary>
         /// Validates the customer data
         /// </summary>
-        public bool Validate()
+        public override bool Validate()
         {
             var isValid = true;
 

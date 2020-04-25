@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace ACM.BL
@@ -17,12 +18,35 @@ namespace ACM.BL
                 product.CurrentPrice = 15.96M;
             }
 
+            Object myObject = new Object();
+
+            Console.WriteLine($"Object: {myObject.ToString()}");
+            Console.WriteLine($"Product: {product.ToString()}");
+
             return product;
         }
 
-        public bool Save()
+        public bool Save(Product product)
         {
-            return true;
+            var success = true;
+            if (product.HasChanges)
+            {
+                if(product.IsValid)
+                {
+                    // Call an Insert Stored Procedure
+                }
+                else
+                {
+                    // Call an Update Stored Procedure
+                    success = false;
+                }
+            }
+            else
+            {
+                success = false;
+            }
+
+            return success;
         }
     }
 }

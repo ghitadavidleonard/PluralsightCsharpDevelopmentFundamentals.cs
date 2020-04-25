@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 
 namespace ACM.BL
 {
@@ -11,7 +8,9 @@ namespace ACM.BL
         {
             addressRepository = new AddressRepository();
         }
+
         private AddressRepository addressRepository { get; set; }
+
         public Customer Retrieve(int customerId)
         {
             Customer customer = new Customer(customerId);
@@ -29,7 +28,25 @@ namespace ACM.BL
 
         public bool Save(Customer customer)
         {
-            return true;
+            var success = true;
+            if (customer.HasChanges)
+            {
+                if (customer.IsValid)
+                {
+                    // Call an Insert Stored Procedure
+                }
+                else
+                {
+                    // Call an Update Stored Procedure
+                    success = false;
+                }
+            }
+            else
+            {
+                success = false;
+            }
+
+            return success;
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ACM.BL
 {
-    public class Order
+    public class Order : EntityBase
     {
         public Order() 
         {
@@ -22,7 +22,9 @@ namespace ACM.BL
         public List<OrderItem> OrderItems { get; set; }
         public DateTimeOffset? OrderDate { get; set; }
 
-        public bool Validate()
+        public override string ToString() => $"{OrderDate.Value.Date} ({OrderId})";
+
+        public override bool Validate()
         {
             var isValid = true;
 
