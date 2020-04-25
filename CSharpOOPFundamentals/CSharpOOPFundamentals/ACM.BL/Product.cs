@@ -13,8 +13,7 @@ namespace ACM.BL
         {
             get 
             {
-                var handler = new StringHandler();
-                return handler.InsertSpaces(_productName);
+                return StringHandler.InsertSpaces(_productName);
             }
             set 
             {
@@ -24,7 +23,6 @@ namespace ACM.BL
 
         public string Description { get; set; }
         public decimal? CurrentPrice { get; set; }
-
         public Product() {}
 
         public Product(int productId)
