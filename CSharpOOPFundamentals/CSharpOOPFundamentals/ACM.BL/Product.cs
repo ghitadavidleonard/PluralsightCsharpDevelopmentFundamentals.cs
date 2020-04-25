@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ACM.BL
 {
-    public class Product : EntityBase
+    public class Product : EntityBase, ILoggable
     {
         public int ProductId { get; private set; }
         private string _productName;
@@ -40,5 +40,7 @@ namespace ACM.BL
 
             return true;
         }
+
+        public string Log() => $"{ProductId}: {ProductName} Detail: {Description} Staus: {EntityState.ToString()}";
     }
 }

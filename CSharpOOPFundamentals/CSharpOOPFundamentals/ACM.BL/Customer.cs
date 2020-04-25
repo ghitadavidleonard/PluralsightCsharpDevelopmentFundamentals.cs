@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Acme.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection.Metadata.Ecma335;
 
 namespace ACM.BL
 {
-    public class Customer : EntityBase
+    public class Customer : EntityBase, ILoggable
     {
         public static int InstanceCount { get; set; }
         public int CustomerId { get; private set; }
@@ -57,6 +58,8 @@ namespace ACM.BL
 
             return isValid;
         }
+
+        public string Log() => $"{CustomerId}: {FullName} Email: {EmailAddress} Status: {EntityState}";
 
     }
 }
