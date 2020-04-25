@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ACM.BL
 {
-    public class Product
+    public class Product : EntityBase
     {
         public int ProductId { get; private set; }
         public string ProductName { get; set; }
@@ -22,9 +22,9 @@ namespace ACM.BL
         /// <summary>
         /// Validates the product data
         /// </summary>
-        public bool Validate()
+        public override bool Validate()
         {
-            if (CurrentPrice == 0) return false;
+            if (CurrentPrice == null) return false;
 
             return true;
         }
